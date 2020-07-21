@@ -11,16 +11,16 @@ script:
     - docker run -e CI=true react-test npm test -- --coverage
 
 after_success:
-    - docker build -t multi-client ./client
-    - docker build -t multi-server ./server
-    - docker build -t multi-worker ./worker
-    - docker build -t multi-nginx ./nginx
+    - docker build -t vigneshjeyaraman2794/multi-client ./client
+    - docker build -t vigneshjeyaraman2794/multi-server ./server
+    - docker build -t vigneshjeyaraman2794/multi-worker ./worker
+    - docker build -t vigneshjeyaraman2794/multi-nginx ./nginx
 
     # login to docker cli and set username and password
     # on travis env
     - echo "$DOCKER_PASSWORD" | docker login - "$DOCKER_ID" --password-stdin
     # take all above images and push them to docker hub
-    - docker push multi-client
-    - docker push multi-server
-    - docker push multi-nginx
-    - docker push multi-worker
+    - docker push vigneshjeyaraman2794/multi-client
+    - docker push vigneshjeyaraman2794/multi-server
+    - docker push vigneshjeyaraman2794/multi-nginx
+    - docker push vigneshjeyaraman2794/multi-worker
